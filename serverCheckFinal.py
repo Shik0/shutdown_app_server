@@ -2,7 +2,7 @@
 #############################################################
 # author Shahin Mikayilov (mikailovsh@gmail.com)            #
 #                                                           #
-# 27.08.2018                                                #
+#                                                #
 # Please, add a comment if you make any changes on this file#
 #############################################################
 import os
