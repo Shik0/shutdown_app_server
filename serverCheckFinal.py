@@ -107,9 +107,11 @@ def startCheck():
     Pickle is a built-in python package and it was used here to loading and
     dumping of session results (easy and simple way).
     """
-	sapides_ip = '192.168.0.104'
-	saprouter_ip = '192.168.0.106'
-	esxi_ip = '192.168.0.220'
+    
+    sapides_ip = '192.168.0.104'
+    saprouter_ip = '192.168.0.106'
+    esxi_ip = '192.168.0.220'
+
     with open("/tmp/pythonSAP/USBConnection.txt", "a") as f:
         # redirect all terminal outputs to the file
         sys.stdout = f
@@ -179,7 +181,7 @@ def startCheck():
             os.system("date >> /tmp/pythonSAP/pythonLog.txt")
             os.system("echo shutdown the SAP")
             hostKey = open("/home/ubuntuser/SAPIdes.txt", "rb").read()
-            uname, passwd = 'idsadm', $SIDADM_PASS # set this env variable beforehand
+            uname, passwd = 'idsadm', os.environ['SIDADM_PASS'] # set this env variable beforehand
             ipaddr, command = sapides_ip, [
                     'stopsap sapides >> /tmp/pythonSAP/pythonLog.txt',
                     'shutdown now'
@@ -207,7 +209,7 @@ def startCheck():
             """
             # shutdown saprouter
             hostKey = open("/home/ubuntuser/SAPRouter.txt", "rb").read()
-            uname, passwd = 'root', $SAPROUTER_PASS
+            uname, passwd = 'root', os.environ['SAPROUTER_PASS']
             ipaddr, command = saprouter_ip, 'shutdown now'
             shutdownSaprouter = shutdown_saprouter(
                     hostKey, uname, passwd, ipaddr, command
@@ -226,7 +228,7 @@ def startCheck():
                 print(t, "Could not shutdown saprouter")
             # shutdown esxi
             hostKey = open("/home/ubuntuser/ESXi.txt", "rb").read()
-            uname, passwd = 'root', $ESXIROOT_PASS
+            uname, passwd = 'root', os.environ['ESXIROOT_PASS']
             ipaddr, command = esxi_ip, 'halt'
             shutdownESX = shutdown_esx(hostKey, uname, passwd, ipaddr, command)
             # write esx shutdown result to the log
