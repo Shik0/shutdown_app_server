@@ -14,7 +14,7 @@ import base64
 import paramiko
 
 
-# shutdown the sapides server
+# shutdown sapides server
 def shutdown_sapides(hostKey, uname, passwd, ipaddr, command):
     """
     Function sends shutdown command to the sapides server to shutdown it.
@@ -41,7 +41,7 @@ def shutdown_sapides(hostKey, uname, passwd, ipaddr, command):
     return result
 
 
-# shutdown the saprouter server
+# shutdown saprouter server
 def shutdown_saprouter(hostKey, uname, passwd, ipaddr, command):
     """
     Function sends shutdown command to the saprouter server to shutdown it.
@@ -66,7 +66,7 @@ def shutdown_saprouter(hostKey, uname, passwd, ipaddr, command):
     return result
 
 
-# shutdown the ESXi server
+# shutdown ESXi server
 def shutdown_esx(hostKey, uname, passwd, ipaddr, command):
     """
     Function sends shutdown command to the ESXi server to shutdown it.
